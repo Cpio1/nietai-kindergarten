@@ -3,7 +3,7 @@ import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { Flower, Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
-import { SiteLogo } from "@/shared/SiteLogo";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
 export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsset | null }) {
@@ -19,7 +19,7 @@ export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsse
         <p className="anim-rise delay-1 mt-3 text-[0.95rem] leading-snug font-semibold text-muted sm:text-[1.05rem]">{t.subtitle}</p>
 
         <div className="anim-pop delay-1 relative mx-auto mt-4 max-w-[17.75rem]">
-          <div className="shape-b absolute top-1/3 -left-14 -z-10 h-32 w-32 bg-peach" />
+          <div className="shape-b absolute top-1/3 -left-24 -z-10 h-32 w-32 bg-peach" />
           {image ? (
             <div className="shape-a overflow-hidden border-[5px] border-surface shadow-xl">
               <Image
@@ -34,15 +34,14 @@ export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsse
               />
             </div>
           ) : (
-            <div className="shape-logo flex aspect-square items-center justify-center bg-white p-[9%] shadow-xl">
-              <SiteLogo
-                locale={locale}
-                sizes={HERO_IMAGE_SIZES}
-                eager
-                highPriority
-                className="w-full object-contain"
-              />
-            </div>
+            <SiteLogo
+              locale={locale}
+              variant="transparent"
+              sizes={LOGO_SIZES.hero}
+              eager
+              highPriority
+              className="mx-auto block w-full max-w-[13rem] object-contain"
+            />
           )}
           <Flower className="anim-float absolute -right-1 -bottom-1 h-8 w-8" color="#FFB5A2" />
         </div>

@@ -6,7 +6,7 @@ import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { Cloud, Flower, Squiggle, Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
-import { SiteLogo } from "@/shared/SiteLogo";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
 export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | null }) {
@@ -16,8 +16,8 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
 
   return (
     <section id="home" className="relative isolate flex min-h-[85svh] flex-col overflow-hidden pt-20">
-      {/* Пятна не заходят под текст: в тёмной теме светлые буквы на них не читались бы. */}
-      <m.div style={{ y: slow }} className="shape-a absolute -top-[10vw] -right-[8vw] -z-10 h-[35vw] w-[35vw] bg-sun" />
+      {/* Пятна не заходят под текст и логотип: на них не читались бы светлые буквы и жёлтые лучи. */}
+      <m.div style={{ y: slow }} className="shape-a absolute -top-[10vw] -right-[8vw] -z-10 h-[24vw] w-[24vw] bg-sun" />
       <div className="shape-b absolute -bottom-32 -left-24 -z-10 h-56 w-56 bg-peach" />
       <Cloud className="anim-drift absolute top-24 left-[34%] -z-10 w-20 opacity-90 dark:opacity-30" />
       <Star className="anim-float absolute top-[14%] left-[47%] h-7 w-7" color="#1EAA91" />
@@ -65,15 +65,14 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
               </div>
             </div>
           ) : (
-            <div className="shape-logo flex aspect-square items-center justify-center bg-white p-[9%] shadow-2xl">
-              <SiteLogo
-                locale={locale}
-                sizes={HERO_IMAGE_SIZES}
-                eager
-                highPriority
-                className="w-full object-contain"
-              />
-            </div>
+            <SiteLogo
+              locale={locale}
+              variant="transparent"
+              sizes={LOGO_SIZES.hero}
+              eager
+              highPriority
+              className="mx-auto block w-full max-w-[18rem] object-contain"
+            />
           )}
         </div>
       </div>
