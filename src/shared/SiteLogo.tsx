@@ -17,12 +17,14 @@ export function SiteLogo({
   variant = "full",
   sizes,
   eager = false,
+  highPriority = false,
   className,
 }: {
   locale: Locale;
   variant?: keyof typeof logos;
   sizes: string;
   eager?: boolean;
+  highPriority?: boolean;
   className?: string;
 }) {
   const logo = logos[variant];
@@ -34,9 +36,10 @@ export function SiteLogo({
       height={logo.height}
       sizes={sizes}
       loading={eager ? "eager" : "lazy"}
+      fetchPriority={highPriority ? "high" : undefined}
       className={`h-auto shrink-0 ${className ?? ""}`}
     />
   );
 }
 
-export const LOGO_SIZES = { nav: "40px", hero: "120px", footer: "72px" } as const;
+export const LOGO_SIZES = { nav: "40px", footer: "72px" } as const;
