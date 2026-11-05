@@ -1,6 +1,7 @@
 import { sectionOrder } from "@/content/dictionary";
 import type { SiteProps } from "@/shared/types";
 import { MobileAbout } from "./MobileAbout";
+import { MobileClubs } from "./MobileClubs";
 import { MobileContact, MobileFooter } from "./MobileContact";
 import { MobileDocuments } from "./MobileDocuments";
 import { MobileFood } from "./MobileFood";
@@ -21,6 +22,7 @@ export function MobileWebsite({ locale, media, documentsUrl }: SiteProps) {
         <MobileHero locale={locale} image={media.hero} />
         <MobileAbout locale={locale} media={media.about} />
         <MobileGroups locale={locale} />
+        <MobileClubs locale={locale} photos={media.clubs} />
         <MobileFood locale={locale} />
         {hasGallery && <MobileGallery locale={locale} images={media.gallery} />}
         <MobileDocuments locale={locale} url={documentsUrl} />

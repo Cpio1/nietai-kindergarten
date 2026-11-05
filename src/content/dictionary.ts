@@ -1,5 +1,5 @@
 export type Locale = "kk" | "ru";
-export type SectionId = "home" | "about" | "groups" | "food" | "gallery" | "documents" | "contact";
+export type SectionId = "home" | "about" | "groups" | "clubs" | "food" | "gallery" | "documents" | "contact";
 
 export const localePath: Record<Locale, string> = { kk: "/", ru: "/ru" };
 
@@ -25,6 +25,12 @@ type Dictionary = {
     mediaAlt: string;
   };
   groups: { eyebrow: string; title: string; text: string; count: string; countLabel: string; call: string };
+  clubs: {
+    eyebrow: string;
+    title: string;
+    text: string;
+    items: { id: "dance" | "taekwondo"; name: string; text: string }[];
+  };
   food: {
     eyebrow: string;
     title: string;
@@ -85,6 +91,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       home: "Басты бет",
       about: "Біз туралы",
       groups: "Топтар",
+      clubs: "Үйірмелер",
       food: "Тамақтану",
       gallery: "Галерея",
       documents: "Құжаттар",
@@ -119,6 +126,23 @@ export const dictionary: Record<Locale, Dictionary> = {
       count: "7",
       countLabel: "топ",
       call: "Қоңырау шалу",
+    },
+    clubs: {
+      eyebrow: "Үйірмелер",
+      title: "Біздің үйірмелер",
+      text: "Бізде екі үйірме бар: би және таеквондо.",
+      items: [
+        {
+          id: "dance",
+          name: "Би үйірмесі",
+          text: "Балалардың ырғақ сезімін, икемділігін және қимыл үйлесімділігін дамыту.",
+        },
+        {
+          id: "taekwondo",
+          name: "Таеквондо үйірмесі",
+          text: "Тәртіптілікке, дене шынықтыруға және өзіне сенімді болуға баулу.",
+        },
+      ],
     },
     food: {
       eyebrow: "Тамақтану",
@@ -183,6 +207,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       home: "Главная",
       about: "О садике",
       groups: "Группы",
+      clubs: "Кружки",
       food: "Питание",
       gallery: "Галерея",
       documents: "Документы",
@@ -217,6 +242,23 @@ export const dictionary: Record<Locale, Dictionary> = {
       count: "7",
       countLabel: "групп",
       call: "Позвонить",
+    },
+    clubs: {
+      eyebrow: "Кружки",
+      title: "Наши кружки",
+      text: "У нас два кружка: хореография и таеквондо.",
+      items: [
+        {
+          id: "dance",
+          name: "Хореография",
+          text: "Развитие чувства ритма, гибкости и координации.",
+        },
+        {
+          id: "taekwondo",
+          name: "Таеквондо",
+          text: "Развитие дисциплины, физической подготовки и уверенности.",
+        },
+      ],
     },
     food: {
       eyebrow: "Питание",
@@ -263,4 +305,4 @@ export const dictionary: Record<Locale, Dictionary> = {
   },
 };
 
-export const sectionOrder: SectionId[] = ["home", "about", "groups", "food", "gallery", "documents", "contact"];
+export const sectionOrder: SectionId[] = ["home", "about", "groups", "clubs", "food", "gallery", "documents", "contact"];

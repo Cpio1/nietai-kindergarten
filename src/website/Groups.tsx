@@ -59,7 +59,7 @@ export function Groups({ locale }: { locale: Locale }) {
 
       <div className="absolute inset-x-0 -bottom-px z-0">
         <Wave className="-mb-10 h-28 text-[#7BD8A0]" variant="c" />
-        <Wave className="relative h-16 text-peach" variant="a" />
+        <Wave className="relative h-16 text-page" variant="a" />
       </div>
     </section>
   );

@@ -8,6 +8,7 @@ export type SiteMedia = {
   hero: ImageAsset | null;
   about: MediaAsset | null;
   gallery: ImageAsset[];
+  clubs: { dance: ImageAsset | null; taekwondo: ImageAsset | null };
 };
 
 export type SiteProps = {

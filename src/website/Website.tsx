@@ -1,6 +1,7 @@
 import { sectionOrder } from "@/content/dictionary";
 import type { SiteProps } from "@/shared/types";
 import { About } from "./About";
+import { Clubs } from "./Clubs";
 import { Contact, Footer } from "./Contact";
 import { Documents } from "./Documents";
 import { Food } from "./Food";
@@ -21,6 +22,7 @@ export function Website({ locale, media, documentsUrl }: SiteProps) {
         <Hero locale={locale} image={media.hero} />
         <About locale={locale} media={media.about} />
         <Groups locale={locale} />
+        <Clubs locale={locale} photos={media.clubs} />
         <Food locale={locale} />
         {hasGallery && <Gallery locale={locale} images={media.gallery} />}
         <Documents locale={locale} url={documentsUrl} />

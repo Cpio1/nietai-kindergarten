@@ -9,7 +9,7 @@ const IMAGES_DIR = path.join(PUBLIC_DIR, "images");
 const IMAGE_FILE = /\.(avif|webp|png|jpe?g)$/i;
 const VIDEO_FILE = /\.(mp4|webm)$/i;
 /** Эти файлы не попадают в галерею: у них своё место на сайте. */
-const RESERVED = /^(main-page|logo)/i;
+const RESERVED = /^(main-page|logo|club-)/i;
 
 function listFiles(dir: string): string[] {
   try {
@@ -69,10 +69,18 @@ async function readGallery(): Promise<ImageAsset[]> {
 }
 
 export async function loadSiteMedia(): Promise<SiteMedia> {
-  const [hero, about, gallery] = await Promise.all([
+  const [hero, about, gallery, dance, taekwondo] = await Promise.all([
     findNamedMedia("main-page", false),
     findNamedMedia("main-page2", true),
     readGallery(),
+    findNamedMedia("club-dance", false),
+    findNamedMedia("club-taekwondo", false),
   ]);
-  return { hero: hero?.kind === "image" ? hero : null, about, gallery };
+  const asImage = (media: MediaAsset | null) => (media?.kind === "image" ? media : null);
+  return {
+    hero: asImage(hero),
+    about,
+    gallery,
+    clubs: { dance: asImage(dance), taekwondo: asImage(taekwondo) },
+  };
 }

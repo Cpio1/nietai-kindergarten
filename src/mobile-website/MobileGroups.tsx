@@ -75,7 +75,7 @@ export function MobileGroups({ locale }: { locale: Locale }) {
         </a>
       </div>
 
-      <Wave className="absolute inset-x-0 -bottom-px h-8 text-peach" variant="c" />
+      <Wave className="absolute inset-x-0 -bottom-px h-8 text-page" variant="c" />
     </section>
   );
 }
