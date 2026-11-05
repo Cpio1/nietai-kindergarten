@@ -11,7 +11,7 @@ function subscribeTheme(onChange: () => void) {
 }
 
 const buttonClass =
-  "inline-flex h-10 min-w-10 cursor-pointer items-center justify-center rounded-full font-display text-sm font-semibold text-ink transition-colors hover:bg-sun hover:text-deep";
+  "inline-flex h-[2.125rem] min-w-[2.125rem] cursor-pointer items-center justify-center rounded-full font-display text-xs font-semibold lg:h-8 lg:min-w-8 text-ink transition-colors hover:bg-sun hover:text-deep";
 
 export function ThemeToggle({ locale }: { locale: Locale }) {
   const isDark = useSyncExternalStore(
@@ -33,7 +33,7 @@ export function ThemeToggle({ locale }: { locale: Locale }) {
 
   return (
     <button type="button" onClick={toggle} aria-label={isDark ? t.toLight : t.toDark} className={buttonClass}>
-      <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true" fill="currentColor">
+      <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
         {isDark ? (
           <>
             <circle cx="12" cy="12" r="5" />

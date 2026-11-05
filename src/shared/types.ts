@@ -17,4 +17,4 @@ export type SiteProps = {
 };
 
 /** Одно значение в обоих деревьях, чтобы браузер скачал главное фото только один раз. */
-export const HERO_IMAGE_SIZES = "(min-width: 1024px) 45vw, 92vw";
+export const HERO_IMAGE_SIZES = "(min-width: 1024px) 400px, 284px";

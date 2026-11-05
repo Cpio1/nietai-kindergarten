@@ -15,7 +15,7 @@ type Props = {
 };
 
 const roundButton =
-  "flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sun text-deep transition-transform hover:scale-110 focus-visible:outline-milk";
+  "flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-sun text-deep transition-transform hover:scale-110 focus-visible:outline-milk";
 
 export function Lightbox({ images, index, locale, onChange }: Props) {
   const t = dictionary[locale].gallery;
@@ -99,12 +99,12 @@ export function Lightbox({ images, index, locale, onChange }: Props) {
             if (Math.abs(delta) > 50) go(delta < 0 ? 1 : -1);
           }}
         >
-          <div className="flex items-center justify-between p-4 lg:p-6">
+          <div className="flex items-center justify-between p-3 lg:p-4">
             <p className="font-display font-semibold text-milk" aria-live="polite">
               {t.counter(index + 1, images.length)}
             </p>
             <button ref={closeRef} type="button" onClick={() => onChange(null)} aria-label={t.close} className={roundButton}>
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true">
                 <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             </button>
@@ -116,7 +116,7 @@ export function Lightbox({ images, index, locale, onChange }: Props) {
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <m.div
                 key={image.src}
-                className="pointer-events-none absolute inset-x-3 inset-y-0 lg:inset-x-24"
+                className="pointer-events-none absolute inset-x-3 inset-y-0 lg:inset-x-20"
                 custom={direction}
                 initial={{ opacity: 0, x: direction * 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -131,12 +131,12 @@ export function Lightbox({ images, index, locale, onChange }: Props) {
           {images.length > 1 && (
             <div className="flex justify-center gap-4 p-4 lg:pointer-events-none lg:absolute lg:inset-x-6 lg:top-1/2 lg:-translate-y-1/2 lg:justify-between lg:p-0">
               <button type="button" onClick={() => go(-1)} aria-label={t.prev} className={`${roundButton} lg:pointer-events-auto`}>
-                <svg viewBox="0 0 24 24" className="h-5 w-5 rotate-180" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="h-4 w-4 rotate-180" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </button>
               <button type="button" onClick={() => go(1)} aria-label={t.next} className={`${roundButton} lg:pointer-events-auto`}>
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </button>

@@ -47,7 +47,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 4.5rem;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -55,8 +55,8 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.65;
+  font-size: 0.90625rem;
+  line-height: 1.6;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.35s ease, color 0.35s ease;
@@ -86,7 +86,7 @@ h3 {
 .shape-b { border-radius: 42% 58% 38% 62% / 58% 42% 58% 42%; }
 .shape-c { border-radius: 50% 50% 46% 54% / 62% 56% 44% 38%; }
 .shape-d { border-radius: 64% 36% 58% 42% / 40% 62% 38% 60%; }
-.shape-leaf { border-radius: 3rem 7rem 3rem 7rem; }
+.shape-leaf { border-radius: 2.5rem 5.5rem 2.5rem 5.5rem; }
 
 /* Постоянные анимации работают на CSS: они дешевле и не нагружают основной поток. */
 @keyframes float {

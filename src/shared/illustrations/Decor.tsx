@@ -81,8 +81,8 @@ export function Star({ className, style, color = "#F8C65C" }: DecorProps & { col
 /** Подпись над заголовком раздела. */
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className={`mb-3 inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.14em] ${className ?? "text-accent"}`}>
-      <Star className="h-4 w-4" color="currentColor" />
+    <p className={`mb-2 inline-flex items-center gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.14em] ${className ?? "text-accent"}`}>
+      <Star className="h-3 w-3" color="currentColor" />
       {children}
     </p>
   );

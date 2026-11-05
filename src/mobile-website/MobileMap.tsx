@@ -5,7 +5,7 @@ import { twoGisWidgetUrl } from "@/content/site";
 
 /** Виджет 2ГИС рассчитан на ширину от 500px: на более узком экране его окно обрезается. */
 const WIDGET_MIN_WIDTH = 500;
-const FRAME_HEIGHT = 384;
+const FRAME_HEIGHT = 320;
 
 export function MobileMap({ title }: { title: string }) {
   const frameRef = useRef<HTMLDivElement>(null);

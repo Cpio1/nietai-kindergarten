@@ -24,21 +24,21 @@ export function MobileGroups({ locale }: { locale: Locale }) {
   const named = groups.filter((group) => group.name);
 
   return (
-    <section id="groups" className="on-bright relative overflow-hidden bg-teal px-5 pt-16 pb-20 text-deep">
-      <Wave className="absolute inset-x-0 -top-px h-8 text-surface" variant="b" flip />
+    <section id="groups" className="on-bright relative overflow-hidden bg-teal px-4 pt-12 pb-14 text-deep">
+      <Wave className="absolute inset-x-0 -top-px h-6 text-surface" variant="b" flip />
 
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-xl">
         <Reveal y={18} className="text-center">
           <Eyebrow className="text-deep">{t.eyebrow}</Eyebrow>
-          <h2 className="text-[2.1rem] font-extrabold sm:text-5xl">{t.title}</h2>
-          <p className="mt-4 font-semibold">{t.text}</p>
+          <h2 className="text-[1.8rem] font-extrabold sm:text-[2.6rem]">{t.title}</h2>
+          <p className="mt-3 font-semibold">{t.text}</p>
         </Reveal>
 
-        <Reveal y={20} className="relative mx-auto mt-6 aspect-square w-full max-w-[22rem]">
+        <Reveal y={20} className="relative mx-auto mt-4 aspect-square w-full max-w-[18rem]">
           <div className="absolute inset-[11%] rounded-full border-4 border-dashed border-deep/25" />
           <div className="shape-a absolute inset-[29%] flex flex-col items-center justify-center bg-sun">
-            <span className="font-display text-5xl leading-none font-extrabold">{t.count}</span>
-            <span className="font-display font-bold">{t.countLabel}</span>
+            <span className="font-display text-[2.6rem] leading-none font-extrabold">{t.count}</span>
+            <span className="font-display text-sm font-bold">{t.countLabel}</span>
           </div>
           <ul className="anim-orbit absolute inset-0">
             {groups.map((group, index) => (
@@ -56,11 +56,11 @@ export function MobileGroups({ locale }: { locale: Locale }) {
         </Reveal>
 
         {named.length > 0 && (
-          <ul className="mt-6 grid grid-cols-2 gap-3">
+          <ul className="mt-5 grid grid-cols-2 gap-2.5">
             {named.map((group) => (
-              <li key={group.critter} className="rounded-3xl bg-milk p-3 text-center">
-                <p className="font-display font-bold">{group.name?.[locale]}</p>
-                {group.ages && <p className="text-sm font-semibold">{group.ages[locale]}</p>}
+              <li key={group.critter} className="rounded-2xl bg-milk p-2.5 text-center">
+                <p className="font-display text-sm font-bold">{group.name?.[locale]}</p>
+                {group.ages && <p className="text-xs font-semibold">{group.ages[locale]}</p>}
               </li>
             ))}
           </ul>
@@ -68,14 +68,14 @@ export function MobileGroups({ locale }: { locale: Locale }) {
 
         <a
           href={`tel:${site.phone.tel}`}
-          className="mt-6 flex items-center justify-center gap-3 rounded-full bg-sun py-3.5 font-display font-semibold active:scale-[0.98]"
+          className="mx-auto mt-5 flex max-w-sm items-center justify-center gap-2.5 rounded-full bg-sun py-2.5 font-display text-sm font-semibold active:scale-[0.98]"
         >
-          <PhoneIcon className="h-5 w-5" />
+          <PhoneIcon className="h-4 w-4" />
           {t.call}
         </a>
       </div>
 
-      <Wave className="absolute inset-x-0 -bottom-px h-10 text-peach" variant="c" />
+      <Wave className="absolute inset-x-0 -bottom-px h-8 text-peach" variant="c" />
     </section>
   );
 }

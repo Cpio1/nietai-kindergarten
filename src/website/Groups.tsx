@@ -8,31 +8,31 @@ import { Cloud, Eyebrow, Wave } from "@/shared/illustrations/Decor";
 import { Balloon, PhoneIcon } from "@/shared/illustrations/Things";
 import { Reveal } from "@/shared/MotionRoot";
 
-const offsets = ["mt-24", "mt-4", "mt-32", "mt-0", "mt-28", "mt-8", "mt-20"];
+const offsets = ["mt-16", "mt-3", "mt-20", "mt-0", "mt-[4.5rem]", "mt-5", "mt-14"];
 
 export function Groups({ locale }: { locale: Locale }) {
   const t = dictionary[locale].groups;
 
   return (
-    <section id="groups" className="on-bright relative isolate overflow-hidden bg-teal pt-36 pb-52 text-deep">
-      <Wave className="absolute inset-x-0 -top-px h-20 text-surface" variant="b" flip />
-      <Cloud className="anim-drift absolute top-40 left-[4%] -z-10 w-40 opacity-70" />
-      <Cloud className="anim-drift absolute top-64 right-[3%] -z-10 w-52 opacity-60" style={{ animationDelay: "-6s" }} />
+    <section id="groups" className="on-bright relative isolate overflow-hidden bg-teal pt-24 pb-36 text-deep">
+      <Wave className="absolute inset-x-0 -top-px h-14 text-surface" variant="b" flip />
+      <Cloud className="anim-drift absolute top-28 left-[4%] -z-10 w-28 opacity-70" />
+      <Cloud className="anim-drift absolute top-44 right-[3%] -z-10 w-36 opacity-60" style={{ animationDelay: "-6s" }} />
 
-      <Reveal className="relative mx-auto max-w-3xl px-8 text-center">
+      <Reveal className="relative mx-auto max-w-2xl px-6 text-center">
         <Eyebrow className="text-deep">{t.eyebrow}</Eyebrow>
-        <h2 className="text-5xl font-extrabold xl:text-6xl">{t.title}</h2>
-        <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold">{t.text}</p>
+        <h2 className="text-[2.5rem] font-extrabold xl:text-5xl">{t.title}</h2>
+        <p className="mx-auto mt-4 max-w-xl text-base font-semibold">{t.text}</p>
         <a
           href={`tel:${site.phone.tel}`}
-          className="mt-8 inline-flex items-center gap-3 rounded-full bg-sun px-7 py-3.5 font-display font-semibold transition-transform duration-300 hover:-translate-y-1"
+          className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-sun px-5 py-2.5 font-display text-sm font-semibold transition-transform duration-300 hover:-translate-y-1"
         >
-          <PhoneIcon className="h-5 w-5" />
+          <PhoneIcon className="h-4 w-4" />
           {t.call}
         </a>
       </Reveal>
 
-      <ul className="relative z-10 mx-auto mt-14 grid max-w-7xl grid-cols-7 gap-3 px-8 xl:gap-6">
+      <ul className="relative z-10 mx-auto mt-8 grid max-w-[59rem] grid-cols-7 gap-3 px-6 xl:gap-4">
         {groups.map((group, index) => (
           <m.li
             key={group.critter}
@@ -48,9 +48,9 @@ export function Groups({ locale }: { locale: Locale }) {
               </div>
             </m.div>
             {group.name && (
-              <div className="mt-3 text-center">
-                <p className="font-display font-bold">{group.name[locale]}</p>
-                {group.ages && <p className="text-sm font-semibold">{group.ages[locale]}</p>}
+              <div className="mt-2 text-center">
+                <p className="font-display text-sm font-bold">{group.name[locale]}</p>
+                {group.ages && <p className="text-xs font-semibold">{group.ages[locale]}</p>}
               </div>
             )}
           </m.li>
@@ -58,8 +58,8 @@ export function Groups({ locale }: { locale: Locale }) {
       </ul>
 
       <div className="absolute inset-x-0 -bottom-px z-0">
-        <Wave className="-mb-16 h-40 text-[#7BD8A0]" variant="c" />
-        <Wave className="relative h-24 text-peach" variant="a" />
+        <Wave className="-mb-10 h-28 text-[#7BD8A0]" variant="c" />
+        <Wave className="relative h-16 text-peach" variant="a" />
       </div>
     </section>
   );
