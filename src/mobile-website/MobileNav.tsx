@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { dictionary, type Locale, type SectionId } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { LanguageSwitch, ThemeToggle, useActiveSection } from "@/shared/controls";
-import { LogoMark, PhoneIcon } from "@/shared/illustrations/Things";
+import { PhoneIcon } from "@/shared/illustrations/Things";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 
 const linkColors = ["bg-teal", "bg-sun", "bg-peach"];
 
@@ -34,7 +35,7 @@ export function MobileNav({ locale, sections }: { locale: Locale; sections: Sect
     <header className="fixed inset-x-0 top-2 z-50 px-2">
       <div className="relative z-10 mx-auto flex max-w-xl items-center justify-between rounded-full border border-line bg-nav py-0.5 pr-0.5 pl-1.5 shadow-[0_10px_30px_-14px_rgba(54,79,73,0.5)] backdrop-blur-lg">
         <a href="#home" aria-label={t.a11y.home} onClick={() => setOpen(false)} className="flex items-center gap-1 rounded-full">
-          <LogoMark className="h-8 w-8" />
+          <SiteLogo locale={locale} variant="mark" sizes={LOGO_SIZES.nav} eager className="w-8" />
           <span className="font-display text-sm font-bold">{t.brand.short}</span>
         </a>
         <div className="flex items-center">

@@ -3,8 +3,9 @@
 import { dictionary, type Locale } from "@/content/dictionary";
 import { site, twoGisFirmUrl } from "@/content/site";
 import { Eyebrow, Wave } from "@/shared/illustrations/Decor";
-import { ArrowIcon, LogoMark, PhoneIcon, PinIcon } from "@/shared/illustrations/Things";
+import { ArrowIcon, PhoneIcon, PinIcon } from "@/shared/illustrations/Things";
 import { Reveal } from "@/shared/MotionRoot";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 import { MobileMap } from "./MobileMap";
 
 export function MobileContact({ locale }: { locale: Locale }) {
@@ -64,7 +65,9 @@ export function MobileFooter({ locale }: { locale: Locale }) {
   const t = dictionary[locale];
   return (
     <footer className="bg-forest px-5 pt-3 pb-8 text-center text-milk">
-      <LogoMark className="mx-auto h-9 w-9" />
+      <span className="inline-block rounded-[1.25rem] bg-milk p-1.5 shadow-sm">
+        <SiteLogo locale={locale} sizes={LOGO_SIZES.footer} className="w-[3.75rem]" />
+      </span>
       <p className="mt-1.5 font-display text-sm font-bold">{t.brand.name}</p>
       <p className="mt-1 text-xs font-semibold">
         © {new Date().getFullYear()} {t.brand.short}. {t.footer.rights}

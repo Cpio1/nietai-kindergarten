@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { Flower, Star, Wave } from "@/shared/illustrations/Decor";
 import { HeroScene } from "@/shared/illustrations/HeroScene";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
 export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsset | null }) {
@@ -15,6 +16,12 @@ export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsse
       <Star className="anim-float absolute top-16 right-4 h-5 w-5" color="#FFF8EC" />
 
       <div className="mx-auto max-w-xl px-4">
+        <SiteLogo
+          locale={locale}
+          sizes={LOGO_SIZES.hero}
+          eager
+          className="anim-pop mb-2 w-[4.75rem] drop-shadow-md sm:w-24 dark:rounded-2xl dark:bg-milk dark:p-1"
+        />
         <h1 className="anim-rise text-[clamp(1.75rem,8.7vw,3rem)] font-extrabold">{t.title}</h1>
         <p className="anim-rise delay-1 mt-3 text-[0.95rem] leading-snug font-semibold text-muted sm:text-[1.05rem]">{t.subtitle}</p>
 

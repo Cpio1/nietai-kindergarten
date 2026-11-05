@@ -3,7 +3,7 @@
 import { m } from "framer-motion";
 import { dictionary, type Locale, type SectionId } from "@/content/dictionary";
 import { LanguageSwitch, ThemeToggle, useActiveSection } from "@/shared/controls";
-import { LogoMark } from "@/shared/illustrations/Things";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 
 export function Nav({ locale, sections }: { locale: Locale; sections: SectionId[] }) {
   const t = dictionary[locale];
@@ -18,7 +18,7 @@ export function Nav({ locale, sections }: { locale: Locale; sections: SectionId[
     >
       <div className="flex w-full max-w-5xl items-center justify-between gap-2 rounded-full border border-line bg-nav py-1 pr-1.5 pl-2.5 shadow-[0_12px_40px_-16px_rgba(54,79,73,0.45)] backdrop-blur-lg">
         <a href="#home" aria-label={t.a11y.home} className="flex shrink-0 items-center gap-2 rounded-full pr-2">
-          <LogoMark className="h-8 w-8" />
+          <SiteLogo locale={locale} variant="mark" sizes={LOGO_SIZES.nav} eager className="w-9" />
           <span className="font-display text-base font-bold">{t.brand.short}</span>
         </a>
 

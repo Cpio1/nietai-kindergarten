@@ -8,7 +8,8 @@ const PUBLIC_DIR = path.join(process.cwd(), "public");
 const IMAGES_DIR = path.join(PUBLIC_DIR, "images");
 const IMAGE_FILE = /\.(avif|webp|png|jpe?g)$/i;
 const VIDEO_FILE = /\.(mp4|webm)$/i;
-const RESERVED = /^main-page/i;
+/** Эти файлы не попадают в галерею: у них своё место на сайте. */
+const RESERVED = /^(main-page|logo)/i;
 
 function listFiles(dir: string): string[] {
   try {

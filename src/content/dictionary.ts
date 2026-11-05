@@ -14,7 +14,7 @@ type Dictionary = {
     mainNav: string;
     home: string;
   };
-  brand: { name: string; short: string };
+  brand: { name: string; short: string; logoAlt: string };
   nav: Record<SectionId, string>;
   hero: { title: string; subtitle: string; cta: string; call: string; imageAlt: string };
   about: {
@@ -80,7 +80,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       mainNav: "Негізгі мәзір",
       home: "Басты бетке өту",
     },
-    brand: { name: "Ниетай бөбекжай-бақшасы", short: "Ниетай" },
+    brand: { name: "Ниетай бөбекжай-бақшасы", short: "Ниетай", logoAlt: "Ниетай бөбекжай-бақшасы логотипі" },
     nav: {
       home: "Басты бет",
       about: "Біз туралы",
@@ -178,7 +178,7 @@ export const dictionary: Record<Locale, Dictionary> = {
       mainNav: "Основное меню",
       home: "На главную",
     },
-    brand: { name: "Детский сад «Ниетай»", short: "Ниетай" },
+    brand: { name: "Детский сад «Ниетай»", short: "Ниетай", logoAlt: "Логотип детского сада «Ниетай»" },
     nav: {
       home: "Главная",
       about: "О садике",

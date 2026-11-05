@@ -3,8 +3,9 @@
 import { dictionary, type Locale } from "@/content/dictionary";
 import { site, twoGisFirmUrl, twoGisWidgetUrl } from "@/content/site";
 import { Eyebrow, Flower, Wave } from "@/shared/illustrations/Decor";
-import { ArrowIcon, LogoMark, PhoneIcon, PinIcon } from "@/shared/illustrations/Things";
+import { ArrowIcon, PhoneIcon, PinIcon } from "@/shared/illustrations/Things";
 import { Reveal } from "@/shared/MotionRoot";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 
 export function Contact({ locale }: { locale: Locale }) {
   const t = dictionary[locale].contact;
@@ -75,7 +76,9 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="bg-forest pt-4 pb-6 text-milk">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6">
         <div className="flex items-center gap-3">
-          <LogoMark className="h-9 w-9" />
+          <span className="rounded-[1.25rem] bg-milk p-1.5 shadow-sm">
+            <SiteLogo locale={locale} sizes={LOGO_SIZES.footer} className="w-[3.75rem]" />
+          </span>
           <span className="font-display text-base font-bold">{t.brand.name}</span>
         </div>
         <p className="text-xs font-semibold">

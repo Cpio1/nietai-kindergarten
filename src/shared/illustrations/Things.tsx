@@ -154,25 +154,3 @@ export function ArrowIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
-export function LogoMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" className={className} aria-hidden="true" focusable="false">
-      {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-        <ellipse
-          key={angle}
-          cx="24"
-          cy="11"
-          rx="8"
-          ry="10"
-          fill={["#1EAA91", "#F8C65C", "#FFB5A2"][i % 3]}
-          transform={`rotate(${angle} 24 24)`}
-        />
-      ))}
-      <circle cx="24" cy="24" r="8.5" fill="#364F49" />
-      <circle cx="21" cy="23" r="1.4" fill="#FFF8EC" />
-      <circle cx="27" cy="23" r="1.4" fill="#FFF8EC" />
-      <path d="M20.500 26.500 Q24 29.500 27.500 26.500" fill="none" stroke="#FFF8EC" strokeWidth="1.4" strokeLinecap="round" />
-    </svg>
-  );
-}

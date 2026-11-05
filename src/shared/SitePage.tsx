@@ -21,6 +21,7 @@ export async function SitePage({ locale }: { locale: Locale }) {
     "@type": "Preschool",
     name: t.brand.name,
     url: locale === "kk" ? `${siteUrl}/` : `${siteUrl}/${locale}`,
+    logo: `${siteUrl}/images/logo.png`,
     telephone: site.phone.tel,
     description: t.meta.description,
     inLanguage: locale,

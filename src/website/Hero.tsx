@@ -4,9 +4,10 @@ import Image from "next/image";
 import { m, useScroll, useTransform } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
-import { Cloud, Flower, Squiggle, Star, Sun, Wave } from "@/shared/illustrations/Decor";
+import { Cloud, Flower, Squiggle, Star, Wave } from "@/shared/illustrations/Decor";
 import { HeroScene } from "@/shared/illustrations/HeroScene";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
 export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | null }) {
@@ -25,6 +26,12 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
 
       <div className="mx-auto grid w-full max-w-6xl flex-1 grid-cols-12 items-center gap-6 px-6 pb-16">
         <div className="col-span-7">
+          <SiteLogo
+            locale={locale}
+            sizes={LOGO_SIZES.hero}
+            eager
+            className="anim-pop mb-3 w-28 drop-shadow-md xl:w-[7.5rem] dark:rounded-[1.25rem] dark:bg-milk dark:p-1.5"
+          />
           <h1 className="anim-rise text-[clamp(2.35rem,4.1vw,4.1rem)] font-extrabold">{t.title}</h1>
           <Squiggle className="anim-rise delay-1 mt-4 w-28" />
           <p className="anim-rise delay-1 mt-4 max-w-lg text-base leading-relaxed font-semibold text-muted xl:text-xl">
@@ -51,7 +58,6 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
         <div className="anim-pop delay-1 relative col-span-5 mx-auto w-full max-w-[25rem]">
           {image ? (
             <div className="relative">
-              <Sun className="absolute -top-10 -left-7 z-10 h-20 w-20" />
               <div className="shape-a overflow-hidden border-8 border-surface shadow-2xl">
                 <Image
                   src={image.src}
