@@ -5,10 +5,9 @@ import { dictionary, type Locale } from "@/content/dictionary";
 import { groups } from "@/content/groups";
 import { site } from "@/content/site";
 import { Cloud, Eyebrow, Wave } from "@/shared/illustrations/Decor";
-import { Balloon, PhoneIcon } from "@/shared/illustrations/Things";
+import { PhoneIcon } from "@/shared/illustrations/Things";
+import { GroupCard } from "@/shared/GroupCard";
 import { Reveal } from "@/shared/MotionRoot";
-
-const offsets = ["mt-16", "mt-3", "mt-20", "mt-0", "mt-[4.5rem]", "mt-5", "mt-14"];
 
 export function Groups({ locale }: { locale: Locale }) {
   const t = dictionary[locale].groups;
@@ -32,27 +31,22 @@ export function Groups({ locale }: { locale: Locale }) {
         </a>
       </Reveal>
 
-      <ul className="relative z-10 mx-auto mt-8 grid max-w-[59rem] grid-cols-7 gap-3 px-6 xl:gap-4">
+      <ul className="relative z-10 mx-auto mt-8 grid max-w-[54rem] grid-cols-4 gap-3 px-6 xl:gap-4">
         {groups.map((group, index) => (
           <m.li
-            key={group.critter}
-            className={offsets[index]}
-            initial={{ opacity: 0, y: 140 }}
+            key={group.id}
+            initial={{ opacity: 0, y: 48 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 1, delay: index * 0.09, ease: [0.2, 0.7, 0.2, 1] }}
+            transition={{ duration: 0.8, delay: (index % 4) * 0.08 + Math.floor(index / 4) * 0.12, ease: [0.2, 0.7, 0.2, 1] }}
           >
-            <m.div whileHover={{ scale: 1.08 }} transition={{ type: "spring", stiffness: 220, damping: 14 }}>
-              <div className="anim-sway" style={{ animationDelay: `${index * -1.1}s`, animationDuration: `${7 + (index % 3)}s` }}>
-                <Balloon critter={group.critter} stripe={group.color} number={index + 1} className="w-full" />
-              </div>
+            <m.div
+              className="h-full"
+              whileHover={{ y: -6, rotate: index % 2 ? 1.5 : -1.5 }}
+              transition={{ type: "spring", stiffness: 260, damping: 16 }}
+            >
+              <GroupCard group={group} index={index} locale={locale} />
             </m.div>
-            {group.name && (
-              <div className="mt-2 text-center">
-                <p className="font-display text-sm font-bold">{group.name[locale]}</p>
-                {group.ages && <p className="text-xs font-semibold">{group.ages[locale]}</p>}
-              </div>
-            )}
           </m.li>
         ))}
       </ul>

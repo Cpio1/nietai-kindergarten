@@ -1,5 +1,3 @@
-import { CritterAt, type CritterKind } from "./Critter";
-
 type MealId = "breakfast" | "lunch" | "snack" | "dinner";
 
 const Steam = ({ x, y }: { x: number; y: number }) => (
@@ -62,42 +60,6 @@ export function MealIcon({ meal, className }: { meal: MealId; className?: string
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true" focusable="false">
       {meals[meal]}
-    </svg>
-  );
-}
-
-/** Воздушный шар со зверёнком: одна группа на иллюстрации раздела «Топтар». */
-export function Balloon({
-  critter,
-  stripe,
-  number,
-  className,
-}: {
-  critter: CritterKind;
-  stripe: string;
-  number: number;
-  className?: string;
-}) {
-  return (
-    <svg viewBox="0 0 160 276" className={className} aria-hidden="true" focusable="false">
-      <path d="M80 6 C36 6 10 40 10 78 C10 118 52 146 66 170 H94 C108 146 150 118 150 78 C150 40 124 6 80 6Z" fill={stripe} />
-      <path d="M80 6 C60 6 44 40 44 78 C44 118 62 146 72 170 H88 C98 146 116 118 116 78 C116 40 100 6 80 6Z" fill="#fff" fillOpacity=".62" />
-      <ellipse cx="46" cy="50" rx="8" ry="16" fill="#fff" opacity=".55" transform="rotate(24 46 50)" />
-      <text
-        x="80"
-        y="98"
-        textAnchor="middle"
-        fontSize="46"
-        fontWeight="800"
-        fill="#0F2B25"
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        {number}
-      </text>
-      <path d="M68 170 L46 232 M92 170 L114 232" stroke="#0F2B25" strokeWidth="2.5" />
-      <CritterAt kind={critter} x={43} y={170} size={74} />
-      <path d="M44 232 H116 L110 264 C109 270 105 272 100 272 H60 C55 272 51 270 50 264Z" fill="#A5704A" />
-      <path d="M42 232 H118" stroke="#7E5234" strokeWidth="7" strokeLinecap="round" />
     </svg>
   );
 }

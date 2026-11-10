@@ -1,4 +1,4 @@
-export type CritterKind = "bear" | "bunny" | "chick" | "cat" | "frog" | "fox" | "elephant";
+export type CritterKind = "bear" | "bunny" | "chick" | "cat" | "frog" | "fox" | "elephant" | "fawn";
 
 const INK = "#364F49";
 
@@ -104,6 +104,23 @@ const bodies: Record<CritterKind, React.ReactNode> = {
       <circle cx="63" cy="46" r="4.4" fill={INK} />
       <circle cx="31" cy="58" r="5" fill="#FF8F78" opacity=".5" />
       <circle cx="69" cy="58" r="5" fill="#FF8F78" opacity=".5" />
+    </>
+  ),
+  fawn: (
+    <>
+      <path d="M30 26 C24 16 26 6 32 4 M30 18 L22 12 M70 26 C76 16 74 6 68 4 M70 18 L78 12" fill="none" stroke="#A5704A" strokeWidth="4" strokeLinecap="round" />
+      <ellipse cx="18" cy="40" rx="13" ry="8" fill="#C98B5B" transform="rotate(-24 18 40)" />
+      <ellipse cx="82" cy="40" rx="13" ry="8" fill="#C98B5B" transform="rotate(24 82 40)" />
+      <ellipse cx="18" cy="40" rx="7" ry="4" fill="#FFB5A2" transform="rotate(-24 18 40)" />
+      <ellipse cx="82" cy="40" rx="7" ry="4" fill="#FFB5A2" transform="rotate(24 82 40)" />
+      <circle cx="50" cy="56" r="33" fill="#D89C6B" />
+      <ellipse cx="50" cy="72" rx="16" ry="12" fill="#FFF8EC" />
+      <circle cx="34" cy="38" r="3" fill="#FFF8EC" />
+      <circle cx="66" cy="38" r="3" fill="#FFF8EC" />
+      <circle cx="50" cy="32" r="2.6" fill="#FFF8EC" />
+      <Face cy={54} smile={false} />
+      <ellipse cx="50" cy="68" rx="4.6" ry="3.4" fill={INK} />
+      <path d="M45 75 Q50 79 55 75" fill="none" stroke={INK} strokeWidth="2.6" strokeLinecap="round" />
     </>
   ),
 };
