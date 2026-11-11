@@ -7,6 +7,7 @@ import { site } from "@/content/site";
 import { GroupCard } from "@/shared/GroupCard";
 import { Eyebrow, Wave } from "@/shared/illustrations/Decor";
 import { PhoneIcon } from "@/shared/illustrations/Things";
+import { Mascot } from "@/shared/Mascot";
 import { Reveal } from "@/shared/MotionRoot";
 
 export function MobileGroups({ locale }: { locale: Locale }) {
@@ -18,8 +19,19 @@ export function MobileGroups({ locale }: { locale: Locale }) {
 
       <div className="mx-auto max-w-xl">
         <Reveal y={18} className="text-center">
-          <Eyebrow className="text-deep">{t.eyebrow}</Eyebrow>
-          <h2 className="text-[1.8rem] font-extrabold sm:text-[2.6rem]">{t.title}</h2>
+          {/* На телефоне маскот стоит рядом с заголовком, а не над карточками групп. */}
+          <div className="flex items-center justify-center gap-1.5">
+            <Mascot
+              name="learning"
+              locale={locale}
+              tilt={-4}
+              className="w-[6.25rem] shrink-0 min-[375px]:w-28 min-[430px]:w-32 sm:w-36"
+            />
+            <div className="min-w-0 text-left">
+              <Eyebrow className="text-deep">{t.eyebrow}</Eyebrow>
+              <h2 className="text-[1.8rem] font-extrabold sm:text-[2.6rem]">{t.title}</h2>
+            </div>
+          </div>
           <p className="mt-3 font-semibold">{t.text}</p>
         </Reveal>
 

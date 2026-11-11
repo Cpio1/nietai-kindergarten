@@ -5,7 +5,9 @@ import { m } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { ClubArt } from "@/shared/illustrations/ClubArt";
 import { Eyebrow, Flower, Star, Wave } from "@/shared/illustrations/Decor";
+import { Mascot } from "@/shared/Mascot";
 import { Reveal } from "@/shared/MotionRoot";
+import { BeltIcon } from "@/shared/illustrations/Things";
 import type { SiteMedia } from "@/shared/types";
 
 const cardStyles = {
@@ -42,7 +44,7 @@ export function Clubs({ locale, photos }: { locale: Locale; photos: SiteMedia["c
           return (
             <m.li
               key={club.id}
-              className={`flex items-center gap-5 p-7 shadow-[0_24px_50px_-28px_rgba(15,43,37,0.7)] xl:p-9 ${style.card}`}
+              className={`relative flex items-center gap-5 p-7 shadow-[0_24px_50px_-28px_rgba(15,43,37,0.7)] xl:p-9 ${style.card}`}
               initial={{ opacity: 0, x: style.from }}
               whileInView={{ opacity: 1, x: 0 }}
               whileHover={{ y: -6 }}
@@ -64,9 +66,25 @@ export function Clubs({ locale, photos }: { locale: Locale; photos: SiteMedia["c
                 )}
               </div>
               <div className="min-w-0">
-                <h3 className="text-2xl font-bold xl:text-[1.7rem]">{club.name}</h3>
+                <h3 className="flex items-center gap-2 text-2xl font-bold xl:text-[1.7rem]">
+                  {club.id === "taekwondo" && (
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-milk/35">
+                      <BeltIcon className="h-5 w-5" />
+                    </span>
+                  )}
+                  {club.name}
+                </h3>
                 <p className="mt-2 text-[0.95rem] leading-snug font-semibold">{club.text}</p>
               </div>
+              {club.id === "dance" && (
+                // Танцор «выходит» из-под карточки в свободное поле: карточка таеквондо стоит ниже.
+                <Mascot
+                  name="dancing"
+                  locale={locale}
+                  loop="dance"
+                  className="absolute top-[calc(100%-2rem)] left-12 w-40 xl:w-44"
+                />
+              )}
             </m.li>
           );
         })}

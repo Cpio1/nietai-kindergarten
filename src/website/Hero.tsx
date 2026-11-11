@@ -6,6 +6,7 @@ import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { Cloud, Flower, Squiggle, Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
+import { Mascot } from "@/shared/Mascot";
 import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
@@ -48,9 +49,10 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
           </div>
         </div>
 
-        <div className="anim-pop delay-1 relative col-span-5 mx-auto w-full max-w-[25rem]">
-          {image ? (
-            <div className="relative">
+        {/* Логотип (или фото) — сверху слева и поверх маскота: надпись «Ниет-ай» никогда не перекрывается. */}
+        <div className="relative col-span-5 mx-auto aspect-[1/1.2] w-full max-w-[27rem]">
+          <div className="anim-pop delay-1 absolute top-0 left-0 z-10 w-[58%]">
+            {image ? (
               <div className="shape-a overflow-hidden border-8 border-surface shadow-2xl">
                 <Image
                   src={image.src}
@@ -63,17 +65,20 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
                   className="aspect-square h-auto w-full object-cover"
                 />
               </div>
-            </div>
-          ) : (
-            <SiteLogo
-              locale={locale}
-              variant="transparent"
-              sizes={LOGO_SIZES.hero}
-              eager
-              highPriority
-              className="mx-auto block w-full max-w-[18rem] object-contain"
-            />
-          )}
+            ) : (
+              <SiteLogo
+                locale={locale}
+                variant="transparent"
+                sizes={LOGO_SIZES.hero}
+                eager
+                highPriority
+                className="block w-full object-contain"
+              />
+            )}
+          </div>
+          <div className="anim-pop delay-3 absolute right-0 bottom-0 w-[66%]">
+            <Mascot name="welcome" locale={locale} reveal={false} eager tilt={-4} />
+          </div>
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import { m } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { Eyebrow, Flower, Star } from "@/shared/illustrations/Decor";
 import { AboutScene } from "@/shared/illustrations/HeroScene";
+import { Mascot } from "@/shared/Mascot";
 import { MediaFrame } from "@/shared/MediaFrame";
 import { Reveal } from "@/shared/MotionRoot";
 import type { MediaAsset } from "@/shared/types";
@@ -46,9 +47,15 @@ export function About({ locale, media }: { locale: Locale; media: MediaAsset | n
           ) : (
             <AboutScene className="w-full" />
           )}
+          {/* Маскот встречает гостей у нижнего угла фото и не заходит на колонку с текстом. */}
+          <Mascot
+            name="openArms"
+            locale={locale}
+            className="absolute -bottom-8 -left-10 z-10 w-[12.5rem] xl:-left-16 xl:w-[14.5rem]"
+          />
         </Reveal>
 
-        <ul className="col-span-12 flex flex-wrap items-start justify-center gap-x-8 gap-y-4 xl:gap-x-12">
+        <ul className="col-span-12 mt-4 flex flex-wrap items-start justify-center gap-x-8 gap-y-4 xl:gap-x-12">
           {t.stats.map((stat, index) => {
             const style = statStyles[index];
             return (

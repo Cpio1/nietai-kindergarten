@@ -7,6 +7,7 @@ import { site } from "@/content/site";
 import { Cloud, Eyebrow, Wave } from "@/shared/illustrations/Decor";
 import { PhoneIcon } from "@/shared/illustrations/Things";
 import { GroupCard } from "@/shared/GroupCard";
+import { Mascot } from "@/shared/Mascot";
 import { Reveal } from "@/shared/MotionRoot";
 
 export function Groups({ locale }: { locale: Locale }) {
@@ -18,18 +19,27 @@ export function Groups({ locale }: { locale: Locale }) {
       <Cloud className="anim-drift absolute top-28 left-[4%] -z-10 w-28 opacity-70" />
       <Cloud className="anim-drift absolute top-44 right-[3%] -z-10 w-36 opacity-60" style={{ animationDelay: "-6s" }} />
 
-      <Reveal className="relative mx-auto max-w-2xl px-6 text-center">
-        <Eyebrow className="text-deep">{t.eyebrow}</Eyebrow>
-        <h2 className="text-[2.5rem] font-extrabold xl:text-5xl">{t.title}</h2>
-        <p className="mx-auto mt-4 max-w-xl text-base font-semibold">{t.text}</p>
-        <a
-          href={`tel:${site.phone.tel}`}
-          className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-sun px-5 py-2.5 font-display text-sm font-semibold transition-transform duration-300 hover:-translate-y-1"
-        >
-          <PhoneIcon className="h-4 w-4" />
-          {t.call}
-        </a>
-      </Reveal>
+      <div className="relative mx-auto max-w-2xl">
+        {/* Маскот стоит справа от заголовка, в свободном поле над карточками: группы не перекрываются. */}
+        <Mascot
+          name="learning"
+          locale={locale}
+          tilt={-4}
+          className="absolute bottom-0 left-[calc(100%+0.25rem)] w-40 xl:left-[calc(100%+1.5rem)] xl:w-[12.5rem]"
+        />
+        <Reveal className="relative px-6 text-center">
+          <Eyebrow className="text-deep">{t.eyebrow}</Eyebrow>
+          <h2 className="text-[2.5rem] font-extrabold xl:text-5xl">{t.title}</h2>
+          <p className="mx-auto mt-4 max-w-xl text-base font-semibold">{t.text}</p>
+          <a
+            href={`tel:${site.phone.tel}`}
+            className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-sun px-5 py-2.5 font-display text-sm font-semibold transition-transform duration-300 hover:-translate-y-1"
+          >
+            <PhoneIcon className="h-4 w-4" />
+            {t.call}
+          </a>
+        </Reveal>
+      </div>
 
       <ul className="relative z-10 mx-auto mt-8 grid max-w-[54rem] grid-cols-4 gap-3 px-6 xl:gap-4">
         {groups.map((group, index) => (

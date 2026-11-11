@@ -5,7 +5,9 @@ import { m } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { ClubArt } from "@/shared/illustrations/ClubArt";
 import { Eyebrow, Wave } from "@/shared/illustrations/Decor";
+import { Mascot } from "@/shared/Mascot";
 import { Reveal } from "@/shared/MotionRoot";
+import { BeltIcon } from "@/shared/illustrations/Things";
 import type { SiteMedia } from "@/shared/types";
 
 const cardStyles = {
@@ -33,14 +35,14 @@ export function MobileClubs({ locale, photos }: { locale: Locale; photos: SiteMe
           <p className="mt-3 font-semibold text-muted">{t.text}</p>
         </Reveal>
 
-        <ul className="on-bright mt-5 space-y-3 text-deep">
+        <ul className="on-bright mt-2 space-y-3 text-deep">
           {t.items.map((club, index) => {
             const style = cardStyles[club.id];
             const photo = photos[club.id];
             return (
               <m.li
                 key={club.id}
-                className={`flex items-center gap-3 p-4 ${style.card}`}
+                className={`relative flex items-center gap-3 p-4 ${style.card} ${club.id === "dance" ? "mt-[6.25rem] min-[430px]:mt-[7.5rem]" : ""}`}
                 initial={{ opacity: 0, x: style.from }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
@@ -61,9 +63,25 @@ export function MobileClubs({ locale, photos }: { locale: Locale; photos: SiteMe
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-[1.2rem] font-bold">{club.name}</h3>
+                  <h3 className="flex items-center gap-1.5 text-[1.2rem] font-bold">
+                    {club.id === "taekwondo" && (
+                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-milk/35">
+                        <BeltIcon className="h-4 w-4" />
+                      </span>
+                    )}
+                    {club.name}
+                  </h3>
                   <p className="mt-1 text-[0.85rem] leading-snug font-semibold">{club.text}</p>
                 </div>
+                {club.id === "dance" && (
+                  // На телефоне танцор «стоит» на верхнем краю карточки справа и не закрывает текст.
+                  <Mascot
+                    name="dancing"
+                    locale={locale}
+                    loop="dance"
+                    className="absolute right-3 bottom-[calc(100%-0.5rem)] w-[6.5rem] min-[375px]:w-28 min-[430px]:w-32"
+                  />
+                )}
               </m.li>
             );
           })}

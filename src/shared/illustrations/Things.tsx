@@ -93,6 +93,17 @@ export function FolderArt({ className }: { className?: string }) {
   );
 }
 
+/** Завязанный пояс добока — значок таеквондо. */
+export function BeltIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false" fill="currentColor">
+      <rect x="2" y="7" width="20" height="4.2" rx="1.4" />
+      <path d="M10.2 10.4 6.4 20.2a.9.9 0 0 0 .5 1.1l1.5.6a.9.9 0 0 0 1.2-.5L12 14.3l2.4 7.1a.9.9 0 0 0 1.2.5l1.5-.6a.9.9 0 0 0 .5-1.1l-3.8-9.8z" />
+      <rect x="9.3" y="5.6" width="5.4" height="7" rx="1.8" />
+    </svg>
+  );
+}
+
 export function PhoneIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false" fill="currentColor">

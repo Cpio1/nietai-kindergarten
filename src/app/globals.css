@@ -126,6 +126,24 @@ h3 {
 .anim-pop { animation: pop 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .anim-steam { animation: steam 3s ease-in-out infinite; }
 
+/* Маскоты: мягкое парение и ритмичные наклоны танцора; ось вращения — у ног. */
+@keyframes mascot-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+@keyframes mascot-dance {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  25% { transform: translate3d(0, -4px, 0) rotate(-4deg); }
+  50% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  75% { transform: translate3d(0, -4px, 0) rotate(4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-mascot-float,
+  .anim-mascot-dance { animation: none; }
+}
+.anim-mascot-float { animation: mascot-float 5.5s ease-in-out infinite; will-change: transform; }
+.anim-mascot-dance { animation: mascot-dance 2.6s ease-in-out infinite; transform-origin: 50% 92%; will-change: transform; }
+
 .delay-1 { animation-delay: 0.12s; }
 .delay-2 { animation-delay: 0.24s; }
 .delay-3 { animation-delay: 0.36s; }

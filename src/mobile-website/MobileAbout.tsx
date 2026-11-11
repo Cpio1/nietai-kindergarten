@@ -3,6 +3,7 @@
 import { dictionary, type Locale } from "@/content/dictionary";
 import { Eyebrow } from "@/shared/illustrations/Decor";
 import { AboutScene } from "@/shared/illustrations/HeroScene";
+import { Mascot } from "@/shared/Mascot";
 import { MediaFrame } from "@/shared/MediaFrame";
 import { Reveal } from "@/shared/MotionRoot";
 import type { MediaAsset } from "@/shared/types";
@@ -43,7 +44,7 @@ export function MobileAbout({ locale, media }: { locale: Locale; media: MediaAss
           ))}
         </ul>
 
-        <Reveal className="mt-6" y={16}>
+        <Reveal className="relative mt-6 pb-10" y={16}>
           {media ? (
             <MediaFrame
               media={media}
@@ -54,6 +55,12 @@ export function MobileAbout({ locale, media }: { locale: Locale; media: MediaAss
           ) : (
             <AboutScene className="mx-auto w-full max-w-[19rem]" />
           )}
+          {/* На телефоне маскот выглядывает из-под правого нижнего угла фото и не выходит за экран. */}
+          <Mascot
+            name="openArms"
+            locale={locale}
+            className="absolute right-0 bottom-0 z-10 w-[7.5rem] min-[375px]:w-[8.75rem] min-[430px]:w-40"
+          />
         </Reveal>
       </div>
     </section>
