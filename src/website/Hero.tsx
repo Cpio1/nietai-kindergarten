@@ -1,16 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { m, useScroll, useTransform } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { Cloud, Flower, Squiggle, Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
 import { Mascot } from "@/shared/Mascot";
-import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
-import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
-export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | null }) {
+export function Hero({ locale }: { locale: Locale }) {
   const t = dictionary[locale].hero;
   const { scrollY } = useScroll();
   const slow = useTransform(scrollY, [0, 800], [0, 90]);
@@ -49,36 +46,17 @@ export function Hero({ locale, image }: { locale: Locale; image: ImageAsset | nu
           </div>
         </div>
 
-        {/* Логотип (или фото) — сверху слева и поверх маскота: надпись «Ниет-ай» никогда не перекрывается. */}
-        <div className="relative col-span-5 mx-auto aspect-[1/1.2] w-full max-w-[27rem]">
-          <div className="anim-pop delay-1 absolute top-0 left-0 z-10 w-[58%]">
-            {image ? (
-              <div className="shape-a overflow-hidden border-8 border-surface shadow-2xl">
-                <Image
-                  src={image.src}
-                  alt={t.imageAlt}
-                  width={image.width}
-                  height={image.height}
-                  sizes={HERO_IMAGE_SIZES}
-                  loading="eager"
-                  fetchPriority="high"
-                  className="aspect-square h-auto w-full object-cover"
-                />
-              </div>
-            ) : (
-              <SiteLogo
-                locale={locale}
-                variant="transparent"
-                sizes={LOGO_SIZES.hero}
-                eager
-                highPriority
-                className="block w-full object-contain"
-              />
-            )}
-          </div>
-          <div className="anim-pop delay-3 absolute right-0 bottom-0 w-[66%]">
-            <Mascot name="welcome" locale={locale} reveal={false} eager tilt={-4} />
-          </div>
+        {/* Главный образ первого экрана — маскот «Ниет-ай» (вместо фото main-page и большого логотипа). */}
+        <div className="anim-pop delay-1 relative col-span-5 flex justify-center">
+          <Mascot
+            name="welcome"
+            locale={locale}
+            reveal={false}
+            eager
+            highPriority
+            tilt={-4}
+            className="w-[min(100%,26rem,calc(85svh-9rem))]"
+          />
         </div>
       </div>
 

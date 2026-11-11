@@ -1,13 +1,10 @@
-import Image from "next/image";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { Flower, Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
 import { Mascot } from "@/shared/Mascot";
-import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
-import { HERO_IMAGE_SIZES, type ImageAsset } from "@/shared/types";
 
-export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsset | null }) {
+export function MobileHero({ locale }: { locale: Locale }) {
   const t = dictionary[locale].hero;
 
   return (
@@ -19,38 +16,19 @@ export function MobileHero({ locale, image }: { locale: Locale; image: ImageAsse
         <h1 className="anim-rise text-[clamp(1.75rem,8.7vw,3rem)] font-extrabold">{t.title}</h1>
         <p className="anim-rise delay-1 mt-3 text-[0.95rem] leading-snug font-semibold text-muted sm:text-[1.05rem]">{t.subtitle}</p>
 
-        {/* На телефоне логотип и маскот стоят рядом: логотип слева и чуть выше, маскот справа «выходит» из-за него. */}
-        <div className="relative mx-auto mt-4 flex max-w-[24rem] items-end">
-          <div className="shape-b absolute top-1/4 -left-24 -z-10 h-32 w-32 bg-peach" />
-          <div className="anim-pop delay-1 relative z-10 mb-6 w-[52%] shrink-0">
-            {image ? (
-              <div className="shape-a overflow-hidden border-[5px] border-surface shadow-xl">
-                <Image
-                  src={image.src}
-                  alt={t.imageAlt}
-                  width={image.width}
-                  height={image.height}
-                  sizes={HERO_IMAGE_SIZES}
-                  loading="eager"
-                  fetchPriority="high"
-                  className="aspect-square h-auto w-full object-cover"
-                />
-              </div>
-            ) : (
-              <SiteLogo
-                locale={locale}
-                variant="transparent"
-                sizes={LOGO_SIZES.hero}
-                eager
-                highPriority
-                className="block w-full object-contain"
-              />
-            )}
-          </div>
-          <div className="anim-pop delay-2 -ml-[4%] w-[52%] shrink-0">
-            <Mascot name="welcome" locale={locale} reveal={false} eager tilt={-4} />
-          </div>
-          <Flower className="anim-float absolute -bottom-1 left-[40%] h-7 w-7" color="#FFB5A2" />
+        {/* На телефоне маскот стоит под описанием, по центру, и не доходит до кнопок. */}
+        <div className="anim-pop delay-1 relative mx-auto mt-3 flex justify-center">
+          <div className="shape-b absolute top-1/4 -left-16 -z-10 h-32 w-32 bg-peach" />
+          <Mascot
+            name="welcome"
+            locale={locale}
+            reveal={false}
+            eager
+            highPriority
+            tilt={-4}
+            className="w-[min(60vw,14rem,34svh)]"
+          />
+          <Flower className="anim-float absolute right-2 bottom-2 h-7 w-7" color="#FFB5A2" />
         </div>
 
         <div className="anim-rise delay-2 relative mx-auto mt-5 flex max-w-sm flex-col gap-2.5">

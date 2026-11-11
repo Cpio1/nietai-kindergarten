@@ -19,8 +19,8 @@ export function Website({ locale, media, documentsUrl }: SiteProps) {
     <>
       <Nav locale={locale} sections={sections} />
       <main>
-        <Hero locale={locale} image={media.hero} />
-        <About locale={locale} media={media.about} />
+        <Hero locale={locale} />
+        <About locale={locale} />
         <Groups locale={locale} />
         <Clubs locale={locale} photos={media.clubs} />
         <Food locale={locale} />

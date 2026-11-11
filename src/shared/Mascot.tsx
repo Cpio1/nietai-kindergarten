@@ -43,8 +43,8 @@ const mascots = {
  * и не скачивает картинку дважды, пока на странице лежат оба дерева.
  */
 export const MASCOT_SIZES = {
-  welcome: "(min-width: 1024px) 300px, 200px",
-  openArms: "(min-width: 1024px) 224px, 160px",
+  welcome: "(min-width: 1024px) 416px, 224px",
+  openArms: "(min-width: 1024px) 480px, 288px",
   learning: "(min-width: 1024px) 200px, 140px",
   dancing: "(min-width: 1024px) 176px, 128px",
 } as const satisfies Record<keyof typeof mascots, string>;
@@ -52,6 +52,7 @@ export const MASCOT_SIZES = {
 const loops = {
   none: "",
   float: "anim-mascot-float",
+  sway: "anim-mascot-sway",
   dance: "anim-mascot-dance",
 } as const;
 
@@ -68,6 +69,7 @@ export function Mascot({
   loop = "float",
   reveal = true,
   eager = false,
+  highPriority = false,
   tilt = 4,
 }: {
   name: MascotName;
@@ -76,6 +78,8 @@ export function Mascot({
   loop?: keyof typeof loops;
   reveal?: boolean;
   eager?: boolean;
+  /** Для маскота первого экрана: он самое крупное изображение (LCP). */
+  highPriority?: boolean;
   tilt?: number;
 }) {
   const mascot = mascots[name];
@@ -96,6 +100,7 @@ export function Mascot({
           height={MASCOT_FILE_SIZE}
           sizes={MASCOT_SIZES[name]}
           loading={eager ? "eager" : "lazy"}
+          fetchPriority={highPriority ? "high" : undefined}
           draggable={false}
           className="block h-auto w-full object-contain"
         />

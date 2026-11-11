@@ -3,11 +3,8 @@
 import { m } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
 import { Eyebrow, Flower, Star } from "@/shared/illustrations/Decor";
-import { AboutScene } from "@/shared/illustrations/HeroScene";
 import { Mascot } from "@/shared/Mascot";
-import { MediaFrame } from "@/shared/MediaFrame";
 import { Reveal } from "@/shared/MotionRoot";
-import type { MediaAsset } from "@/shared/types";
 
 const statStyles = [
   { shape: "shape-a", bg: "bg-teal", size: "h-40 w-40", value: "text-[3.5rem]", offset: "" },
@@ -16,7 +13,7 @@ const statStyles = [
   { shape: "shape-b", bg: "bg-sun", size: "h-44 w-44", value: "text-[3.5rem]", offset: "mt-9" },
 ];
 
-export function About({ locale, media }: { locale: Locale; media: MediaAsset | null }) {
+export function About({ locale }: { locale: Locale }) {
   const t = dictionary[locale].about;
 
   return (
@@ -35,25 +32,14 @@ export function About({ locale, media }: { locale: Locale; media: MediaAsset | n
           </div>
         </Reveal>
 
-        <Reveal className="relative col-span-6 mx-auto w-full max-w-md" delay={0.15}>
-          <div className="shape-b absolute -inset-3 -z-10 translate-x-4 translate-y-4 bg-teal/25" />
-          {media ? (
-            <MediaFrame
-              media={media}
-              alt={t.mediaAlt}
-              sizes="448px"
-              className="shape-leaf aspect-[5/4] shadow-xl"
-            />
-          ) : (
-            <AboutScene className="w-full" />
-          )}
-          {/* Маскот встречает гостей у нижнего угла фото и не заходит на колонку с текстом. */}
-          <Mascot
-            name="openArms"
-            locale={locale}
-            className="absolute -bottom-8 -left-10 z-10 w-[12.5rem] xl:-left-16 xl:w-[14.5rem]"
-          />
-        </Reveal>
+        {/* Вместо фото main-page2 — один большой маскот на зелёном пятне, по центру колонки. */}
+        <div className="relative col-span-6 flex items-center justify-center">
+          <div className="shape-b absolute inset-x-[6%] inset-y-[8%] -z-10 translate-x-4 translate-y-4 bg-teal/25" />
+          <div className="shape-a absolute inset-x-[8%] inset-y-[10%] -z-10 bg-teal" />
+          <Star className="anim-float absolute top-[6%] left-[4%] h-7 w-7" color="#F8C65C" />
+          <Flower className="anim-float delay-2 absolute right-[2%] bottom-[10%] h-8 w-8" color="#FFB5A2" />
+          <Mascot name="openArms" locale={locale} loop="sway" className="w-[min(100%,30rem)]" />
+        </div>
 
         <ul className="col-span-12 mt-4 flex flex-wrap items-start justify-center gap-x-8 gap-y-4 xl:gap-x-12">
           {t.stats.map((stat, index) => {

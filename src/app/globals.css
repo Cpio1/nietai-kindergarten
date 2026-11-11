@@ -137,7 +137,16 @@ h3 {
   50% { transform: translate3d(0, 0, 0) rotate(0deg); }
   75% { transform: translate3d(0, -4px, 0) rotate(4deg); }
 }
+/* Парение на 10px с мягким наклоном вправо-влево. */
+@keyframes mascot-sway {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  25% { transform: translate3d(0, -10px, 0) rotate(2deg); }
+  50% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  75% { transform: translate3d(0, -10px, 0) rotate(-2deg); }
+}
+.anim-mascot-sway { animation: mascot-sway 7s ease-in-out infinite; transform-origin: 50% 90%; will-change: transform; }
 @media (prefers-reduced-motion: reduce) {
+  .anim-mascot-sway,
   .anim-mascot-float,
   .anim-mascot-dance { animation: none; }
 }

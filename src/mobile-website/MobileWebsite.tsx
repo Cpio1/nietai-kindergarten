@@ -19,8 +19,8 @@ export function MobileWebsite({ locale, media, documentsUrl }: SiteProps) {
     <>
       <MobileNav locale={locale} sections={sections} />
       <main>
-        <MobileHero locale={locale} image={media.hero} />
-        <MobileAbout locale={locale} media={media.about} />
+        <MobileHero locale={locale} />
+        <MobileAbout locale={locale} />
         <MobileGroups locale={locale} />
         <MobileClubs locale={locale} photos={media.clubs} />
         <MobileFood locale={locale} />

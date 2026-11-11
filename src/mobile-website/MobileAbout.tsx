@@ -1,12 +1,9 @@
 "use client";
 
 import { dictionary, type Locale } from "@/content/dictionary";
-import { Eyebrow } from "@/shared/illustrations/Decor";
-import { AboutScene } from "@/shared/illustrations/HeroScene";
+import { Eyebrow, Flower, Star } from "@/shared/illustrations/Decor";
 import { Mascot } from "@/shared/Mascot";
-import { MediaFrame } from "@/shared/MediaFrame";
 import { Reveal } from "@/shared/MotionRoot";
-import type { MediaAsset } from "@/shared/types";
 
 const tiles = [
   "bg-teal rounded-[1.5rem_2.5rem_1.5rem_1.5rem]",
@@ -15,7 +12,7 @@ const tiles = [
   "bg-sun rounded-[1.5rem_1.5rem_2.5rem_1.5rem]",
 ];
 
-export function MobileAbout({ locale, media }: { locale: Locale; media: MediaAsset | null }) {
+export function MobileAbout({ locale }: { locale: Locale }) {
   const t = dictionary[locale].about;
 
   return (
@@ -44,24 +41,13 @@ export function MobileAbout({ locale, media }: { locale: Locale; media: MediaAss
           ))}
         </ul>
 
-        <Reveal className="relative mt-6 pb-10" y={16}>
-          {media ? (
-            <MediaFrame
-              media={media}
-              alt={t.mediaAlt}
-              sizes="(min-width: 640px) 448px, 92vw"
-              className="mx-auto max-w-md rounded-[1.75rem_3.5rem_1.75rem_3.5rem] shadow-lg"
-            />
-          ) : (
-            <AboutScene className="mx-auto w-full max-w-[19rem]" />
-          )}
-          {/* На телефоне маскот выглядывает из-под правого нижнего угла фото и не выходит за экран. */}
-          <Mascot
-            name="openArms"
-            locale={locale}
-            className="absolute right-0 bottom-0 z-10 w-[7.5rem] min-[375px]:w-[8.75rem] min-[430px]:w-40"
-          />
-        </Reveal>
+        {/* На телефоне маскот по центру под карточками, на своём зелёном пятне. */}
+        <div className="relative isolate mx-auto mt-6 flex justify-center">
+          <div className="shape-a absolute inset-y-[8%] left-1/2 -z-10 w-[min(84vw,19rem)] -translate-x-1/2 bg-teal" />
+          <Star className="anim-float absolute top-[4%] left-[6%] h-5 w-5" color="#F8C65C" />
+          <Flower className="anim-float delay-2 absolute right-[6%] bottom-[8%] h-6 w-6" color="#FFB5A2" />
+          <Mascot name="openArms" locale={locale} loop="sway" className="w-[min(78vw,18rem)]" />
+        </div>
       </div>
     </section>
   );
