@@ -22,7 +22,7 @@ export function MobileWebsite({ locale, media, documentsUrl }: SiteProps) {
         <MobileHero locale={locale} />
         <MobileAbout locale={locale} />
         <MobileGroups locale={locale} />
-        <MobileClubs locale={locale} photos={media.clubs} />
+        <MobileClubs locale={locale} />
         <MobileFood locale={locale} />
         {hasGallery && <MobileGallery locale={locale} images={media.gallery} />}
         <MobileDocuments locale={locale} url={documentsUrl} />

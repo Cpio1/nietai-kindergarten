@@ -4,11 +4,10 @@ import Image from "next/image";
 import { m } from "framer-motion";
 import type { Locale } from "@/content/dictionary";
 
-/** Все PNG — 1254×1254 с прозрачным фоном; размер на странице задаётся через className. */
-const MASCOT_FILE_SIZE = 1254;
-
+/** PNG квадратные с прозрачным фоном; size — сторона файла, размер на странице задаётся через className. */
 const mascots = {
   welcome: {
+    size: 1254,
     src: "/images/mascots/mascot-welcome.png",
     alt: {
       kk: "«Ниет-ай» маскоты — қол бұлғап амандасып тұрған күн",
@@ -16,6 +15,7 @@ const mascots = {
     },
   },
   openArms: {
+    size: 1254,
     src: "/images/mascots/mascot-open-arms.png",
     alt: {
       kk: "Құшағын жайып қарсы алған «Ниет-ай» маскоты",
@@ -23,6 +23,7 @@ const mascots = {
     },
   },
   learning: {
+    size: 1254,
     src: "/images/mascots/mascot-learning.png",
     alt: {
       kk: "Қарындаш пен рюкзак ұстаған «Ниет-ай» маскоты",
@@ -30,13 +31,24 @@ const mascots = {
     },
   },
   dancing: {
+    size: 1254,
     src: "/images/mascots/mascot-dancing.png",
     alt: {
       kk: "Билеп жүрген «Ниет-ай» маскоты",
       ru: "Танцующий маскот «Ниет-ай»",
     },
   },
-} satisfies Record<string, { src: string; alt: Record<Locale, string> }>;
+  dancer: {
+    size: 920,
+    src: "/images/mascots/mascot-dancer.png",
+    alt: { kk: "Би үйірмесінің маскоты", ru: "Маскот кружка танцев" },
+  },
+  taekwondo: {
+    size: 920,
+    src: "/images/mascots/mascot-taekwondo.png",
+    alt: { kk: "Таеквондо үйірмесінің маскоты", ru: "Маскот кружка таеквондо" },
+  },
+} satisfies Record<string, { size: number; src: string; alt: Record<Locale, string> }>;
 
 /**
  * Одна строка sizes на маскот для обеих версий сайта: браузер выбирает один и тот же файл
@@ -47,6 +59,8 @@ export const MASCOT_SIZES = {
   openArms: "(min-width: 1024px) 480px, 288px",
   learning: "(min-width: 1024px) 200px, 140px",
   dancing: "(min-width: 1024px) 176px, 128px",
+  dancer: "(min-width: 1024px) 208px, 128px",
+  taekwondo: "(min-width: 1024px) 208px, 128px",
 } as const satisfies Record<keyof typeof mascots, string>;
 
 const loops = {
@@ -54,6 +68,7 @@ const loops = {
   float: "anim-mascot-float",
   sway: "anim-mascot-sway",
   dance: "anim-mascot-dance",
+  fight: "anim-mascot-fight",
 } as const;
 
 export type MascotName = keyof typeof mascots;
@@ -96,8 +111,8 @@ export function Mascot({
         <Image
           src={mascot.src}
           alt={mascot.alt[locale]}
-          width={MASCOT_FILE_SIZE}
-          height={MASCOT_FILE_SIZE}
+          width={mascot.size}
+          height={mascot.size}
           sizes={MASCOT_SIZES[name]}
           loading={eager ? "eager" : "lazy"}
           fetchPriority={highPriority ? "high" : undefined}

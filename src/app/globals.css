@@ -145,7 +145,18 @@ h3 {
   75% { transform: translate3d(0, -10px, 0) rotate(-2deg); }
 }
 .anim-mascot-sway { animation: mascot-sway 7s ease-in-out infinite; transform-origin: 50% 90%; will-change: transform; }
+/* Таеквондист: спокойное покачивание корпуса и короткий удар кулаком (вперёд — влево) раз в цикл. */
+@keyframes mascot-fight {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  30% { transform: translate3d(0, -4px, 0) rotate(0.6deg); }
+  60% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  70% { transform: translate3d(2px, 0, 0) rotate(1.5deg); }
+  76% { transform: translate3d(-5px, -2px, 0) rotate(-2.5deg) scale(1.03); }
+  86% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+.anim-mascot-fight { animation: mascot-fight 4.5s ease-in-out infinite; transform-origin: 50% 92%; will-change: transform; }
 @media (prefers-reduced-motion: reduce) {
+  .anim-mascot-fight,
   .anim-mascot-sway,
   .anim-mascot-float,
   .anim-mascot-dance { animation: none; }

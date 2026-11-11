@@ -22,7 +22,7 @@ export function Website({ locale, media, documentsUrl }: SiteProps) {
         <Hero locale={locale} />
         <About locale={locale} />
         <Groups locale={locale} />
-        <Clubs locale={locale} photos={media.clubs} />
+        <Clubs locale={locale} />
         <Food locale={locale} />
         {hasGallery && <Gallery locale={locale} images={media.gallery} />}
         <Documents locale={locale} url={documentsUrl} />

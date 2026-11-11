@@ -1,29 +1,29 @@
 "use client";
 
-import Image from "next/image";
 import { m } from "framer-motion";
 import { dictionary, type Locale } from "@/content/dictionary";
-import { ClubArt } from "@/shared/illustrations/ClubArt";
 import { Eyebrow, Flower, Star, Wave } from "@/shared/illustrations/Decor";
 import { Mascot } from "@/shared/Mascot";
 import { Reveal } from "@/shared/MotionRoot";
-import { BeltIcon } from "@/shared/illustrations/Things";
-import type { SiteMedia } from "@/shared/types";
 
 const cardStyles = {
   dance: {
     card: "bg-sun rounded-[3rem_8rem_3rem_8rem]",
-    frame: "shape-a bg-peach",
+    blob: "shape-a bg-peach",
+    mascot: "dancer",
+    loop: "dance",
     from: -40,
   },
   taekwondo: {
     card: "bg-teal rounded-[8rem_3rem_8rem_3rem] mt-12",
-    frame: "shape-b bg-milk/35",
+    blob: "shape-b bg-milk/35",
+    mascot: "taekwondo",
+    loop: "fight",
     from: 40,
   },
 } as const;
 
-export function Clubs({ locale, photos }: { locale: Locale; photos: SiteMedia["clubs"] }) {
+export function Clubs({ locale }: { locale: Locale }) {
   const t = dictionary[locale].clubs;
 
   return (
@@ -40,7 +40,6 @@ export function Clubs({ locale, photos }: { locale: Locale; photos: SiteMedia["c
       <ul className="on-bright mx-auto mt-8 grid max-w-5xl grid-cols-2 items-start gap-6 px-6 text-deep">
         {t.items.map((club, index) => {
           const style = cardStyles[club.id];
-          const photo = photos[club.id];
           return (
             <m.li
               key={club.id}
@@ -51,40 +50,15 @@ export function Clubs({ locale, photos }: { locale: Locale; photos: SiteMedia["c
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: [0.2, 0.7, 0.2, 1] }}
             >
-              <div className={`flex h-36 w-36 shrink-0 items-center justify-center overflow-hidden xl:h-40 xl:w-40 ${style.frame}`}>
-                {photo ? (
-                  <Image
-                    src={photo.src}
-                    alt={club.name}
-                    width={photo.width}
-                    height={photo.height}
-                    sizes="160px"
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <ClubArt club={club.id} className="h-full w-full p-1.5" />
-                )}
+              {/* Маскот кружка внутри карточки слева; мягкое пятно за ним — декоративное, без рамки и обрезки. */}
+              <div className="relative isolate -my-6 -ml-3 w-48 shrink-0 xl:-my-7 xl:w-52">
+                <div className={`absolute inset-[17%] -z-10 ${style.blob}`} />
+                <Mascot name={style.mascot} locale={locale} loop={style.loop} tilt={index ? -4 : 4} />
               </div>
               <div className="min-w-0">
-                <h3 className="flex items-center gap-2 text-2xl font-bold xl:text-[1.7rem]">
-                  {club.id === "taekwondo" && (
-                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-milk/35">
-                      <BeltIcon className="h-5 w-5" />
-                    </span>
-                  )}
-                  {club.name}
-                </h3>
+                <h3 className="text-2xl font-bold xl:text-[1.7rem]">{club.name}</h3>
                 <p className="mt-2 text-[0.95rem] leading-snug font-semibold">{club.text}</p>
               </div>
-              {club.id === "dance" && (
-                // Танцор «выходит» из-под карточки в свободное поле: карточка таеквондо стоит ниже.
-                <Mascot
-                  name="dancing"
-                  locale={locale}
-                  loop="dance"
-                  className="absolute top-[calc(100%-2rem)] left-12 w-40 xl:w-44"
-                />
-              )}
             </m.li>
           );
         })}
