@@ -7,6 +7,7 @@ export const site = {
   geo: { lat: 43.490512, lon: 77.031653 },
   twoGisFirmId: "70000001090847863",
   groupCount: 7,
+  documentsUrl: "https://drive.google.com/drive/folders/1js2nlBir1vqW8QlG3KVHROECagxayMGe",
 } as const;
 
 const twoGisOptions = {
@@ -22,7 +23,9 @@ export const twoGisWidgetUrl = `https://widgets.2gis.com/widget?type=firmsonmap&
 export const twoGisFirmUrl = `https://2gis.kz/almaty/firm/${site.twoGisFirmId}`;
 
 /** Возвращает ссылку только если это настоящий адрес Google Drive или Docs. */
-export function resolveDocumentsUrl(raw = process.env.NEXT_PUBLIC_DOCUMENTS_URL): string | null {
+export function resolveDocumentsUrl(
+  raw = process.env.NEXT_PUBLIC_DOCUMENTS_URL?.trim() || site.documentsUrl,
+): string | null {
   if (!raw) return null;
   try {
     const url = new URL(raw.trim());
