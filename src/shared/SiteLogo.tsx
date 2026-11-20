@@ -44,4 +44,4 @@ export function SiteLogo({
   );
 }
 
-export const LOGO_SIZES = { nav: "40px", footer: "72px" } as const;
+export const LOGO_SIZES = { nav: "40px", footer: "72px", hero: "(min-width: 768px) 448px, 280px" } as const;

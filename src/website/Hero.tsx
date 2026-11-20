@@ -5,7 +5,7 @@ import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
 import { Cloud, Flower, Squiggle, Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
-import { Mascot } from "@/shared/Mascot";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 
 export function Hero({ locale }: { locale: Locale }) {
   const t = dictionary[locale].hero;
@@ -46,16 +46,15 @@ export function Hero({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        {/* Главный образ первого экрана — маскот «Ниет-ай» (вместо фото main-page и большого логотипа). */}
+        {/* Главный образ первого экрана — оригинальный логотип «Ниет-ай» на прозрачном фоне. */}
         <div className="anim-pop delay-1 relative col-span-5 flex justify-center">
-          <Mascot
-            name="welcome"
+          <SiteLogo
             locale={locale}
-            reveal={false}
+            variant="transparent"
+            sizes={LOGO_SIZES.hero}
             eager
             highPriority
-            tilt={-4}
-            className="w-[min(100%,26rem,calc(85svh-9rem))]"
+            className="w-[min(100%,28rem,calc(85svh-9rem))] object-contain"
           />
         </div>
       </div>

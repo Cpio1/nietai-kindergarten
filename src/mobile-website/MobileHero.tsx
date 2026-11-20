@@ -1,8 +1,8 @@
 import { dictionary, type Locale } from "@/content/dictionary";
 import { site } from "@/content/site";
-import { Flower, Star, Wave } from "@/shared/illustrations/Decor";
+import { Star, Wave } from "@/shared/illustrations/Decor";
 import { ArrowIcon, PhoneIcon } from "@/shared/illustrations/Things";
-import { Mascot } from "@/shared/Mascot";
+import { LOGO_SIZES, SiteLogo } from "@/shared/SiteLogo";
 
 export function MobileHero({ locale }: { locale: Locale }) {
   const t = dictionary[locale].hero;
@@ -16,19 +16,17 @@ export function MobileHero({ locale }: { locale: Locale }) {
         <h1 className="anim-rise text-[clamp(1.75rem,8.7vw,3rem)] font-extrabold">{t.title}</h1>
         <p className="anim-rise delay-1 mt-3 text-[0.95rem] leading-snug font-semibold text-muted sm:text-[1.05rem]">{t.subtitle}</p>
 
-        {/* На телефоне маскот стоит под описанием, по центру, и не доходит до кнопок. */}
+        {/* На телефоне логотип стоит под описанием, по центру, и не доходит до кнопок. */}
         <div className="anim-pop delay-1 relative mx-auto mt-3 flex justify-center">
           <div className="shape-b absolute top-1/4 -left-16 -z-10 h-32 w-32 bg-peach" />
-          <Mascot
-            name="welcome"
+          <SiteLogo
             locale={locale}
-            reveal={false}
+            variant="transparent"
+            sizes={LOGO_SIZES.hero}
             eager
             highPriority
-            tilt={-4}
-            className="w-[min(60vw,14rem,34svh)]"
+            className="w-[min(70vw,17.5rem,36svh)] object-contain"
           />
-          <Flower className="anim-float absolute right-2 bottom-2 h-7 w-7" color="#FFB5A2" />
         </div>
 
         <div className="anim-rise delay-2 relative mx-auto mt-5 flex max-w-sm flex-col gap-2.5">
